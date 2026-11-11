@@ -96,7 +96,6 @@ UserSchema.methods.comparePassword = async function (candidatePassword: string):
 };
 
 // Index for fast queries
-UserSchema.index({ email: 1 });
 UserSchema.index({ role: 1 });
 UserSchema.index({ parentId: 1 });
 

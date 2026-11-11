@@ -29,7 +29,6 @@ const SettingSchema = new Schema<ISetting>(
   { timestamps: true }
 );
 
-SettingSchema.index({ key: 1 });
 SettingSchema.index({ category: 1 });
 
 export default mongoose.model<ISetting>('Setting', SettingSchema);

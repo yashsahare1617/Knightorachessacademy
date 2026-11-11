@@ -40,6 +40,4 @@ const GallerySchema = new Schema<IGallery>(
   { timestamps: true }
 );
 
-GallerySchema.index({ slug: 1 });
-
 export default mongoose.model<IGallery>('Gallery', GallerySchema);
