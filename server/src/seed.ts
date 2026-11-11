@@ -74,7 +74,7 @@ async function seed() {
     if (!mongoUri) {
       throw new Error('MONGODB_URI environment variable is not defined');
     }
-    await mongoose.connect(mongoUri, { dbName: 'knightora' });
+    await mongoose.connect(mongoUri, { dbName: 'knightora' } as any);
     console.log('Connected to MongoDB');
 
     for (const c of courses) {

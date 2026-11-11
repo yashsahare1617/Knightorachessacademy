@@ -70,8 +70,8 @@ router.post(
     const album = await Gallery.findById(req.params.id);
     if (!album) throw createError('Album not found', 404);
 
-    const files = req.files as Express.Multer.File[];
-    const uploadPromises = files.map(file =>
+    const files = (req.files as any[]) || [];
+    const uploadPromises = files.map((file: any) =>
       uploadToCloudinary(file.buffer, 'knightora/gallery')
     );
     const results = await Promise.all(uploadPromises);

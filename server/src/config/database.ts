@@ -9,7 +9,7 @@ export const connectDB = async (): Promise<void> => {
 
     const conn = await mongoose.connect(mongoUri, {
       dbName: 'knightora',
-    });
+    } as any);
 
     console.log(`✅ MongoDB Atlas connected: ${conn.connection.host}`);
   } catch (error) {
