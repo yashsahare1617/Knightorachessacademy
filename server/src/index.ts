@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import mongoose from 'mongoose';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
@@ -72,7 +73,13 @@ app.use('/api/visitors', visitorRoutes);
 
 // Health check
 app.get('/api/health', (_req: Request, res: Response) => {
-  res.json({ status: 'ok', service: 'Knightora API', timestamp: new Date().toISOString() });
+  const dbStatus = mongoose.connection.readyState === 1 ? 'connected' : 'connecting';
+  res.json({
+    status: 'ok',
+    service: 'Knightora API',
+    database: dbStatus,
+    timestamp: new Date().toISOString(),
+  });
 });
 
 // Error handler (must be last)
